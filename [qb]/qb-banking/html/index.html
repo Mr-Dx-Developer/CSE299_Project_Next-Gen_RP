@@ -30,21 +30,21 @@
                         <div class="nav-options">
                             <div class="nav-option" :class="{selected: activeView === 'home'}" @click="setActiveView('home')">Home</div>
                             <div class="nav-option" :class="{selected: activeView === 'money'}" @click="setActiveView('money')">Money</div>
-                            <div class="nav-option" :class="{selected: activeView === 'transfer'}" @click="setActiveView('transfer')">Transfer</div>
+                            <!-- <div class="nav-option" :class="{selected: activeView === 'transfer'}" @click="setActiveView('transfer')">Transfer</div> -->
                             <div class="nav-option" :class="{selected: activeView === 'accountOptions'}" @click="setActiveView('accountOptions')">Account Options</div>
                         </div>
                         <div class="notification-container" v-if="notification">
                             <div :class="['notification', notification.type]">{{ notification.message }}</div>
                         </div>
                     </div>
-                    <div v-if="activeView === 'home'" class="transactions">
+                    <!-- <div v-if="activeView === 'home'" class="transactions">
                         <li v-for="statement in statements[selectedAccountStatement]" :key="statement.id">
                             <span>{{ formatDate(statement.date) }}</span>
                             <span>{{ statement.user }}</span>
                             <span>{{ statement.reason }}</span>
                             <span :class="balanceClass(statement.type)">{{ statement.amount }}</span>
                         </li>
-                    </div>
+                    </div> -->
                     <div v-if="activeView === 'money'" class="money">
                         <div class="manage-money">
                             <div class="money-title">Money Management</div>
@@ -62,7 +62,7 @@
                             </div>
                         </div>
                     </div>
-                    <div v-if="activeView === 'transfer'" class="transfer">
+                    <!-- <div v-if="activeView === 'transfer'" class="transfer">
                         <div class="transfer-header">
                             <div class="nav-option" :class="{selected: transferType === 'internal'}" @click="setTransferType('internal')">Internal</div>
                             <span class="money-title">Transfer</span>
@@ -96,7 +96,7 @@
                             <input type="text" id="transfer-reason" v-model="transferReason" />
                             <button class="action-button" @click="externalTransfer">Transfer</button>
                         </div>
-                    </div>
+                    </div> -->
                     <div v-if="activeView === 'accountOptions'" class="account-options">
                         <div class="debit-card">
                             <div>Order Debit Card</div>
