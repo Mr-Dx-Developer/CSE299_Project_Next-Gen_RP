@@ -754,14 +754,14 @@ Config.Locations = {
 
     ['police'] = {
         ['label'] = 'Police Shop',
-        ['coords'] = vector4(461.8498, -981.0677, 30.6896, 91.5892),
+        ['coords'] = vector4(-1067.7, -811.53, 15.64, 138.24),
         ['ped'] = 'mp_m_securoguard_01',
         ['scenario'] = 'WORLD_HUMAN_COP_IDLES',
         ['radius'] = 1.5,
         ['targetIcon'] = 'fas fa-gun',
         ['targetLabel'] = 'Open Armory',
         ['products'] = Config.Products['police'],
-        ['delivery'] = vector4(459.0441, -1008.0366, 28.2627, 271.4695),
+        ['delivery'] = vector4(-1067.7, -811.53, 15.64, 138.24),
         ['requiredJob'] = 'police',
     },
 

@@ -1,190 +1,120 @@
 Config = {}
 Config.UseTarget = GetConvar('UseTarget', 'false') == 'true' -- Use qb-target interactions (don't change this, go to your server.cfg and add setr UseTarget true)
-Config.MinimalDoctors = 10 -- How many players with the ambulance job to prevent the hospital check-in system from being used
-Config.DocCooldown = 0.10 -- Cooldown between doctor calls allowed, in minutes
-Config.WipeInventoryOnRespawn = false -- Enable or disable removing all the players items when they respawn at the hospital
-Config.Helicopter = "polmav" -- Helicopter model that players with the ambulance job can use
-Config.BillCost = 2000 -- Price that players are charged for using the hospital check-in system
-Config.DeathTime = 300 -- How long the timer is for players to bleed out completely and respawn at the hospital
-Config.ReviveInterval = 360 -- How long the timer is for players to revive a player in laststand
-Config.MinimumRevive = 300 -- How long the timer is for players to revive a player in laststand
-Config.PainkillerInterval = 60 -- Set the length of time painkillers last (per one)
-Config.HealthDamage = 5 -- Minumum damage done to health before checking for injuries
-Config.ArmorDamage = 5 -- Minumum damage done to armor before checking for injuries
-Config.ForceInjury = 90 -- Maximum amount of damage a player can take before limb damage & effects are forced to occur
-Config.AlwaysBleedChance = 70 -- Set the chance out of 100 that if a player is hit with a weapon, that also has a random chance, it will cause bleeding
-Config.MessageTimer = 12 -- How long it will take to display limb/bleed message
-Config.AIHealTimer = 10 -- How long it will take to be healed after checking in, in seconds
-Config.BleedTickRate = 30 -- How much time, in seconds, between bleed ticks
-Config.BleedMovementTick = 10 -- How many seconds is taken away from the bleed tick rate if the player is walking, jogging, or sprinting
-Config.BleedMovementAdvance = 3 -- How much time moving while bleeding adds
-Config.BleedTickDamage = 8 -- The base damage that is multiplied by bleed level everytime a bleed tick occurs
-Config.FadeOutTimer = 200000000000000 -- How many bleed ticks occur before fadeout happens
-Config.BlackoutTimer = 0 -- How many bleed ticks occur before blacking out
-Config.AdvanceBleedTimer = 10 -- How many bleed ticks occur before bleed level increases
-Config.HeadInjuryTimer = 0 -- How much time, in seconds, do head injury effects chance occur
-Config.ArmInjuryTimer = 30 -- How much time, in seconds, do arm injury effects chance occur
-Config.LegInjuryTimer = 15 -- How much time, in seconds, do leg injury effects chance occur
-Config.HeadInjuryChance = 0 -- The chance, in percent, that head injury side-effects get applied
-Config.LegInjuryChance = { -- The chance, in percent, that leg injury side-effects get applied
-    Running = 30,
+Config.MinimalDoctors = 2                                    -- How many players with the ambulance job to prevent the hospital check-in system from being used
+Config.DocCooldown = 1                                       -- Cooldown between doctor calls allowed, in minutes
+Config.WipeInventoryOnRespawn = true                         -- Enable or disable removing all the players items when they respawn at the hospital
+Config.RespawnAtNearestHospital = true                       -- Enable or disable respawning at the closest hospital
+Config.Helicopter = 'polmav'                                 -- Helicopter model that players with the ambulance job can use
+Config.BillCost = 2000                                       -- Price that players are charged for using the hospital check-in system
+Config.DeathTime = 300                                       -- How long the timer is for players to bleed out completely and respawn at the hospital
+Config.ReviveInterval = 360                                  -- How long the timer is for players to revive a player in laststand
+Config.MinimumRevive = 300                                   -- How long the timer is for players to revive a player in laststand
+Config.PainkillerInterval = 60                               -- Set the length of time painkillers last (per one)
+Config.HealthDamage = 5                                      -- Minumum damage done to health before checking for injuries
+Config.ArmorDamage = 5                                       -- Minumum damage done to armor before checking for injuries
+Config.ForceInjury = 35                                      -- Maximum amount of damage a player can take before limb damage & effects are forced to occur
+Config.AlwaysBleedChance = 70                                -- Set the chance out of 100 that if a player is hit with a weapon, that also has a random chance, it will cause bleeding
+Config.MessageTimer = 12                                     -- How long it will take to display limb/bleed message
+Config.AIHealTimer = 20                                      -- How long it will take to be healed after checking in, in seconds
+Config.BleedTickRate = 30                                    -- How much time, in seconds, between bleed ticks
+Config.BleedMovementTick = 10                                -- How many seconds is taken away from the bleed tick rate if the player is walking, jogging, or sprinting
+Config.BleedMovementAdvance = 3                              -- How much time moving while bleeding adds
+Config.BleedTickDamage = 8                                   -- The base damage that is multiplied by bleed level everytime a bleed tick occurs
+Config.FadeOutTimer = 2                                      -- How many bleed ticks occur before fadeout happens
+Config.BlackoutTimer = 10                                    -- How many bleed ticks occur before blacking out
+Config.AdvanceBleedTimer = 10                                -- How many bleed ticks occur before bleed level increases
+Config.HeadInjuryTimer = 30                                  -- How much time, in seconds, do head injury effects chance occur
+Config.ArmInjuryTimer = 30                                   -- How much time, in seconds, do arm injury effects chance occur
+Config.LegInjuryTimer = 15                                   -- How much time, in seconds, do leg injury effects chance occur
+Config.HeadInjuryChance = 25                                 -- The chance, in percent, that head injury side-effects get applied
+Config.LegInjuryChance = {                                   -- The chance, in percent, that leg injury side-effects get applied
+    Running = 50,
     Walking = 15
 }
 Config.MajorArmoredBleedChance = 45 -- The chance, in percent, that a player will get a bleed effect when taking heavy damage while wearing armor
-Config.MaxInjuryChanceMulti = 3 -- How many times the HealthDamage value above can divide into damage taken before damage is forced to be applied
-Config.DamageMinorToMajor = 35 -- How much damage would have to be applied for a minor weapon to be considered a major damage event. Put this at 100 if you want to disable it
-Config.AlertShowInfo = 2 -- How many injuries a player must have before being alerted about them
+Config.MaxInjuryChanceMulti = 3     -- How many times the HealthDamage value above can divide into damage taken before damage is forced to be applied
+Config.DamageMinorToMajor = 35      -- How much damage would have to be applied for a minor weapon to be considered a major damage event. Put this at 100 if you want to disable it
+Config.AlertShowInfo = 2            -- How many injuries a player must have before being alerted about them
 
-Config.Locations = { -- Edit the various interaction points for players or create new ones
-    ["checking"] = {
-	    [1] = vector3(308.19, -595.35, 43.29),
-	    [2] = vector3(-254.54, 6331.78, 32.43), -- paleto
-        [3] = vector3(1828.1, 3685.23, 34.27), -- sandy
+Config.Locations = {                -- Edit the various interaction points for players or create new ones
+    ['checking'] = {
+        vector3(308.19, -595.35, 43.29),
+        vector3(-254.54, 6331.78, 32.43), -- paleto
     },
-    ["duty"] = {
-        [1] = vector3(310.48, -597.11, 43.28),
-        [2] = vector3(-254.88, 6324.5, 32.58),
+    ['duty'] = {
+        vector3(310.48, -597.11, 43.28),
+        vector3(-254.88, 6324.5, 32.58), -- paleto
     },
-    ["vehicle"] = {
-    --    [1] = vector4(294.578, -574.761, 43.179, 35.79),
-    --    [2] = vector4(-234.28, 6329.16, 32.15, 222.5),
+    ['vehicle'] = {
+        -- vector4(294.578, -574.761, 43.179, 35.79),
+        -- vector4(-234.28, 6329.16, 32.15, 222.5), -- paleto
     },
-    ["helicopter"] = {
-    --    [1] = vector4(351.58, -587.45, 74.16, 160.5),
-    --    [2] = vector4(-475.43, 5988.353, 31.716, 31.34),
+    ['helicopter'] = {
+        -- vector4(351.58, -587.45, 74.16, 160.5),
+        -- vector4(-475.43, 5988.353, 31.716, 31.34), -- paleto
     },
-    ["armory"] = {
-        [1] = vector3(306.75, -601.92, 43.28),
-        [2] = vector3(-245.13, 6315.71, 32.82),
+    ['roof'] = {
+        vector4(338.5, -583.85, 74.16, 245.5),
     },
-    ["roof"] = {
-        [1] = vector4(338.5, -583.85, 74.16, 245.5),
+    ['main'] = {
+        vector3(331.71, -596.89, 43.28),
     },
-    ["main"] = {
-        [1] = vector3(331.71, -596.89, 43.28),
+    ['stash'] = {
+        vector3(302.22, -598.87, 43.28),
     },
-    ["main2"] = {
-        [1] = vector3(330.10, -601.84, 43.28),
+    ['beds'] = {
+        { coords = vector4(313.87, -579.08, 42.90, 163.97),    taken = false, model = 1631638868 },
+        { coords = vector4(314.59, -584.18, 42.90, 339.61),  taken = false, model = 1631638868 },
+        { coords = vector4(322.68, -587.28, 42.90, 338.05),   taken = false, model = 2117668672 },
+        { coords = vector4(317.79, -585.47, 42.90, 341.78),    taken = false, model = 2117668672 },
+        -- { coords = vector4(346.99, -590.48, 43.1, 336.32),   taken = false, model = 2117668672 },
+        -- { coords = vector4(360.32, -587.19, 43.02, 152.08),  taken = false, model = -1091386327 },
+        -- { coords = vector4(349.82, -583.33, 43.02, 152.08),  taken = false, model = -1091386327 },
+        -- { coords = vector4(326.98, -576.17, 43.02, 152.08),  taken = false, model = -1091386327 },
+        --- paleto
+        { coords = vector4(-252.43, 6312.25, 32.34, 313.48), taken = false, model = 2117668672 },
+        { coords = vector4(-247.04, 6317.95, 32.34, 134.64), taken = false, model = 2117668672 },
+        { coords = vector4(-255.98, 6315.67, 32.34, 313.91), taken = false, model = 2117668672 },
     },
-    ["ground"] = {
-        [1] = vector3(340.77, -585.96, 28.80),
+    ['jailbeds'] = {
+        { coords = vector4(1761.96, 2597.74, 45.66, 270.14), taken = false, model = 2117668672 },
+        { coords = vector4(1761.96, 2591.51, 45.66, 269.8),  taken = false, model = 2117668672 },
+        { coords = vector4(1771.8, 2598.02, 45.66, 89.05),   taken = false, model = 2117668672 },
+        { coords = vector4(1771.85, 2591.85, 45.66, 91.51),  taken = false, model = 2117668672 },
     },
-    ["stash"] = {
-        [1] = vector3(302.22, -598.87, 43.28),
+    ['hospital'] = {
+        {
+            ['name'] = Lang:t('info.pb_hospital'),
+            ['location'] = vector3(308.36, -595.25, 43.28),
+            ['beds'] = {
+                { coords = vector4(313.87, -579.08, 42.90, 163.97),   taken = false, model = 1631638868 },
+                { coords = vector4(314.59, -584.18, 42.90, 339.61), taken = false, model = 1631638868 },
+                { coords = vector4(322.68, -587.28, 42.90, 338.05),  taken = false, model = 2117668672 },
+                { coords = vector4(317.79, -585.47, 42.90, 341.78),   taken = false, model = 2117668672 },
+                -- { coords = vector4(346.99, -590.48, 43.1, 336.32),  taken = false, model = 2117668672 },
+                -- { coords = vector4(360.32, -587.19, 43.02, 152.08), taken = false, model = -1091386327 },
+                -- { coords = vector4(349.82, -583.33, 43.02, 152.08), taken = false, model = -1091386327 },
+                -- { coords = vector4(326.98, -576.17, 43.02, 152.08), taken = false, model = -1091386327 },
+            },
+        },
+        {
+            ['name'] = Lang:t('info.paleto_hospital'),
+            ['location'] = vector3(-254.54, 6331.78, 32.43),
+            ['beds'] = {
+                { coords = vector4(-252.43, 6312.25, 32.34, 313.48), taken = false, model = 2117668672 },
+                { coords = vector4(-247.04, 6317.95, 32.34, 134.64), taken = false, model = 2117668672 },
+                { coords = vector4(-255.98, 6315.67, 32.34, 313.91), taken = false, model = 2117668672 },
+            },
+        },
     },
-    ["beds"] = {
-        [1] = {coords = vector4(313.87, -579.08, 42.90, 163.97), taken = false, model = 1631638868},
-        [2] = {coords = vector4(314.59, -584.18, 42.90, 339.61), taken = false, model = 1631638868},
-        [3] = {coords = vector4(322.68, -587.28, 42.90, 338.05), taken = false, model = 1631638868},
-        [4] = {coords = vector4(317.79, -585.47, 42.90, 341.78), taken = false, model = 1631638868},
-        -- [5] = {coords = vector4(319.28, -581.05, 42.90, 157.01), taken = false, model = 1631638868},
-        -- [6] = {coords = vector4(-254.23, 6313.94, 33.34, 311.89), taken = false, model = 2117668672},
-        -- [7] = {coords = vector4(1818.47, 3678.36, 35.02, 293.23), taken = false, model = -1091386327},
-    },
-    ["jailbeds"] = {
-        [1] = {coords = vector4(1761.96, 2597.74, 45.66, 270.14), taken = false, model = 2117668672},
-        [2] = {coords = vector4(1761.96, 2591.51, 45.66, 269.8), taken = false, model = 2117668672},
-        [3] = {coords = vector4(1771.8, 2598.02, 45.66, 89.05), taken = false, model = 2117668672},
-        [4] = {coords = vector4(1771.85, 2591.85, 45.66, 91.51), taken = false, model = 2117668672},
-    },
-    ["stations"] = {
-        [1] = {label = Lang:t('info.pb_hospital'), coords = vector4(304.27, -600.33, 43.28, 272.249)}
+    ['stations'] = {
+        { label = Lang:t('info.pb_hospital'), coords = vector3(304.27, -600.33, 43.28) }
     }
 }
 
-Config.AuthorizedVehicles = { -- Vehicles players can use based on their ambulance job grade level
-	-- Grade 0
-	[0] = {
-		["ambulance"] = "Ambulance",
-	},
-	-- Grade 1
-	[1] = {
-		["ambulance"] = "Ambulance",
-
-	},
-	-- Grade 2
-	[2] = {
-		["ambulance"] = "Ambulance",
-	},
-	-- Grade 3
-	[3] = {
-		["ambulance"] = "Ambulance",
-	},
-	-- Grade 4
-	[4] = {
-		["ambulance"] = "Ambulance",
-	}
-}
-
-Config.Items = { -- Items found in the ambulance shop for players with the ambulance job to purchase
-    label = Lang:t('info.safe'),
-    slots = 8,
-    items = {
-        [1] = {
-            name = "radio",
-            price = 100,
-            amount = 200,
-            info = {},
-            type = "item",
-            slot = 1,
-        },
-        [2] = {
-            name = "bandage",
-            price = 100,
-            amount = 200,
-            info = {},
-            type = "item",
-            slot = 2,
-        },
-        [3] = {
-            name = "painkillers",
-            price = 100,
-            amount = 200,
-            info = {},
-            type = "item",
-            slot = 3,
-        },
-        [4] = {
-            name = "firstaid",
-            price = 100,
-            amount = 200,
-            info = {},
-            type = "item",
-            slot = 4,
-        },
-        [5] = {
-            name = "weapon_flashlight",
-            price = 100,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 5,
-        },
-        [6] = {
-            name = "weapon_fireextinguisher",
-            price = 100,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 6,
-        },
-        [7] = {
-            name = "emsbag",
-            price = 100,
-            amount = 7,
-            info = {},
-            type = "item",
-            slot = 7,
-        },
-        [8] = {
-            name = "ifaks",
-            price = 500,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 8,
-        },
-
+Config.AuthorizedVehicles = { -- Grade is key, don't add same vehicle in multiple grades. Higher rank can see lower
+    [0] = {
+        ['ambulance'] = 'Ambulance'
     }
 }
 
@@ -256,10 +186,10 @@ Config.WoundStates = { -- Translate wound alerts
 }
 
 Config.BleedingStates = { -- Translate bleeding alerts
-    [1] = {label = Lang:t('states.little_bleed')},
-    [2] = {label = Lang:t('states.bleed')},
-    [3] = {label = Lang:t('states.lot_bleed')},
-    [4] = {label = Lang:t('states.big_bleed')},
+    { label = Lang:t('states.little_bleed') },
+    { label = Lang:t('states.bleed') },
+    { label = Lang:t('states.lot_bleed') },
+    { label = Lang:t('states.big_bleed') },
 }
 
 Config.MovementRate = { -- Set the player movement rate based on the level of damage they have
@@ -285,16 +215,16 @@ Config.Bones = { -- Correspond bone hash numbers to their label
     [45509] = 'LARM',
     [61163] = 'LARM',
     [18905] = 'LHAND',
-    [4089] = 'LFINGER',
-    [4090] = 'LFINGER',
-    [4137] = 'LFINGER',
-    [4138] = 'LFINGER',
-    [4153] = 'LFINGER',
-    [4154] = 'LFINGER',
-    [4169] = 'LFINGER',
-    [4170] = 'LFINGER',
-    [4185] = 'LFINGER',
-    [4186] = 'LFINGER',
+    [4089]  = 'LFINGER',
+    [4090]  = 'LFINGER',
+    [4137]  = 'LFINGER',
+    [4138]  = 'LFINGER',
+    [4153]  = 'LFINGER',
+    [4154]  = 'LFINGER',
+    [4169]  = 'LFINGER',
+    [4170]  = 'LFINGER',
+    [4185]  = 'LFINGER',
+    [4186]  = 'LFINGER',
     [26610] = 'LFINGER',
     [26611] = 'LFINGER',
     [26612] = 'LFINGER',
@@ -302,7 +232,7 @@ Config.Bones = { -- Correspond bone hash numbers to their label
     [26614] = 'LFINGER',
     [58271] = 'LLEG',
     [63931] = 'LLEG',
-    [2108] = 'LFOOT',
+    [2108]  = 'LFOOT',
     [14201] = 'LFOOT',
     [40269] = 'RARM',
     [28252] = 'RARM',
@@ -390,7 +320,7 @@ Config.BoneIndexes = { -- Correspond bone labels to their hash number
 Config.Weapons = { -- Correspond weapon names to their class number
     [`WEAPON_STUNGUN`] = Config.WeaponClasses['NONE'],
     [`WEAPON_STUNGUN_MP`] = Config.WeaponClasses['NONE'],
-    --[[ Small Caliber ]]--
+    --[[ Small Caliber ]] --
     [`WEAPON_PISTOL`] = Config.WeaponClasses['SMALL_CALIBER'],
     [`WEAPON_COMBATPISTOL`] = Config.WeaponClasses['SMALL_CALIBER'],
     [`WEAPON_APPISTOL`] = Config.WeaponClasses['SMALL_CALIBER'],
@@ -403,7 +333,7 @@ Config.Weapons = { -- Correspond weapon names to their class number
     [`WEAPON_SNSPISTOL_MK2`] = Config.WeaponClasses['SMALL_CALIBER'],
     [`WEAPON_VINTAGEPISTOL`] = Config.WeaponClasses['SMALL_CALIBER'],
 
-    --[[ Medium Caliber ]]--
+    --[[ Medium Caliber ]] --
     [`WEAPON_ADVANCEDRIFLE`] = Config.WeaponClasses['MEDIUM_CALIBER'],
     [`WEAPON_ASSAULTSMG`] = Config.WeaponClasses['MEDIUM_CALIBER'],
     [`WEAPON_BULLPUPRIFLE`] = Config.WeaponClasses['MEDIUM_CALIBER'],
@@ -423,7 +353,7 @@ Config.Weapons = { -- Correspond weapon names to their class number
     [`WEAPON_SPECIALCARBINE`] = Config.WeaponClasses['MEDIUM_CALIBER'],
     [`WEAPON_SPECIALCARBINE_MK2`] = Config.WeaponClasses['MEDIUM_CALIBER'],
 
-    --[[ High Caliber ]]--
+    --[[ High Caliber ]] --
     [`WEAPON_ASSAULTRIFLE`] = Config.WeaponClasses['HIGH_CALIBER'],
     [`WEAPON_ASSAULTRIFLE_MK2`] = Config.WeaponClasses['HIGH_CALIBER'],
     [`WEAPON_COMBATMG`] = Config.WeaponClasses['HIGH_CALIBER'],
@@ -438,7 +368,7 @@ Config.Weapons = { -- Correspond weapon names to their class number
     [`WEAPON_RAILGUN`] = Config.WeaponClasses['HIGH_CALIBER'],
     [`WEAPON_HEAVYRIFLE`] = Config.WeaponClasses['HIGH_CALIBER'],
 
-    --[[ Shotguns ]]--
+    --[[ Shotguns ]] --
     [`WEAPON_ASSAULTSHOTGUN`] = Config.WeaponClasses['SHOTGUN'],
     [`WEAPON_BULLUPSHOTGUN`] = Config.WeaponClasses['SHOTGUN'],
     [`WEAPON_DBSHOTGUN`] = Config.WeaponClasses['SHOTGUN'],
@@ -448,12 +378,12 @@ Config.Weapons = { -- Correspond weapon names to their class number
     [`WEAPON_SAWNOFFSHOTGUN`] = Config.WeaponClasses['SHOTGUN'],
     [`WEAPON_SWEEPERSHOTGUN`] = Config.WeaponClasses['SHOTGUN'],
 
-    --[[ Animals ]]--
-    [`WEAPON_ANIMAL`] = Config.WeaponClasses['WILDLIFE'], -- Animal
-    [`WEAPON_COUGAR`] = Config.WeaponClasses['WILDLIFE'], -- Cougar
+    --[[ Animals ]]                                            --
+    [`WEAPON_ANIMAL`] = Config.WeaponClasses['WILDLIFE'],      -- Animal
+    [`WEAPON_COUGAR`] = Config.WeaponClasses['WILDLIFE'],      -- Cougar
     [`WEAPON_BARBED_WIRE`] = Config.WeaponClasses['WILDLIFE'], -- Barbed Wire
 
-    --[[ Cutting Weapons ]]--
+    --[[ Cutting Weapons ]]                                    --
     [`WEAPON_BATTLEAXE`] = Config.WeaponClasses['CUTTING'],
     [`WEAPON_BOTTLE`] = Config.WeaponClasses['CUTTING'],
     [`WEAPON_DAGGER`] = Config.WeaponClasses['CUTTING'],
@@ -462,10 +392,10 @@ Config.Weapons = { -- Correspond weapon names to their class number
     [`WEAPON_MACHETE`] = Config.WeaponClasses['CUTTING'],
     [`WEAPON_SWITCHBLADE`] = Config.WeaponClasses['CUTTING'],
 
-    --[[ Light Impact ]]--
+    --[[ Light Impact ]] --
     [`WEAPON_KNUCKLE`] = Config.WeaponClasses['LIGHT_IMPACT'],
 
-    --[[ Heavy Impact ]]--
+    --[[ Heavy Impact ]] --
     [`WEAPON_BAT`] = Config.WeaponClasses['HEAVY_IMPACT'],
     [`WEAPON_CROWBAR`] = Config.WeaponClasses['HEAVY_IMPACT'],
     [`WEAPON_FIREEXTINGUISHER`] = Config.WeaponClasses['HEAVY_IMPACT'],
@@ -478,7 +408,7 @@ Config.Weapons = { -- Correspond weapon names to their class number
     [`WEAPON_RAMMED_BY_CAR`] = Config.WeaponClasses['HEAVY_IMPACT'],
     [`WEAPON_RUN_OVER_BY_CAR`] = Config.WeaponClasses['HEAVY_IMPACT'],
 
-    --[[ Explosives ]]--
+    --[[ Explosives ]] --
     [`WEAPON_EXPLOSION`] = Config.WeaponClasses['EXPLOSIVE'],
     [`WEAPON_GRENADE`] = Config.WeaponClasses['EXPLOSIVE'],
     [`WEAPON_COMPACTLAUNCHER`] = Config.WeaponClasses['EXPLOSIVE'],
@@ -490,102 +420,56 @@ Config.Weapons = { -- Correspond weapon names to their class number
     [`WEAPON_HELI_CRASH`] = Config.WeaponClasses['EXPLOSIVE'],
     [`WEAPON_EMPLAUNCHER`] = Config.WeaponClasses['EXPLOSIVE'],
 
-    --[[ Other ]]--
-    [`WEAPON_FALL`] = Config.WeaponClasses['OTHER'], -- Fall
+    --[[ Other ]]                                                   --
+    [`WEAPON_FALL`] = Config.WeaponClasses['OTHER'],                -- Fall
     [`WEAPON_HIT_BY_WATER_CANNON`] = Config.WeaponClasses['OTHER'], -- Water Cannon
 
-    --[[ Fire ]]--
+    --[[ Fire ]]                                                    --
     [`WEAPON_ELECTRIC_FENCE`] = Config.WeaponClasses['FIRE'],
     [`WEAPON_FIRE`] = Config.WeaponClasses['FIRE'],
     [`WEAPON_MOLOTOV`] = Config.WeaponClasses['FIRE'],
     [`WEAPON_FLARE`] = Config.WeaponClasses['FIRE'],
     [`WEAPON_FLAREGUN`] = Config.WeaponClasses['FIRE'],
 
-    --[[ Suffocate ]]--
-    [`WEAPON_DROWNING`] = Config.WeaponClasses['SUFFOCATING'], -- Drowning
+    --[[ Suffocate ]]                                                     --
+    [`WEAPON_DROWNING`] = Config.WeaponClasses['SUFFOCATING'],            -- Drowning
     [`WEAPON_DROWNING_IN_VEHICLE`] = Config.WeaponClasses['SUFFOCATING'], -- Drowning Veh
-    [`WEAPON_EXHAUSTION`] = Config.WeaponClasses['SUFFOCATING'], -- Exhaust
+    [`WEAPON_EXHAUSTION`] = Config.WeaponClasses['SUFFOCATING'],          -- Exhaust
     [`WEAPON_BZGAS`] = Config.WeaponClasses['SUFFOCATING'],
     [`WEAPON_SMOKEGRENADE`] = Config.WeaponClasses['SUFFOCATING'],
-
-        --[[ HIGH CALIBER ]]
-        [`WEAPON_DE`] = Config.WeaponClasses['HIGH_CALIBER'],
-        [`WEAPON_M4`] = Config.WeaponClasses['HIGH_CALIBER'],
-        [`WEAPON_HK416`] = Config.WeaponClasses['HIGH_CALIBER'],
-        [`WEAPON_AR15`] = Config.WeaponClasses['HIGH_CALIBER'],
-        [`WEAPON_AK47`] = Config.WeaponClasses['HIGH_CALIBER'],
-        [`WEAPON_M70`] = Config.WeaponClasses['HIGH_CALIBER'],
-        [`WEAPON_SCARH`] = Config.WeaponClasses['HIGH_CALIBER'],
-        [`WEAPON_MK14`] = Config.WeaponClasses['HIGH_CALIBER'],
-        [`WEAPON_M110`] = Config.WeaponClasses['HIGH_CALIBER'],
-        [`WEAPON_HUNTINGRIFLE`] = Config.WeaponClasses['HIGH_CALIBER'],
-        --[[ MEDIUM CALIBER ]]
-        [`WEAPON_UZI`] = Config.WeaponClasses['MEDIUM_CALIBER'],
-        [`WEAPON_MAC10`] = Config.WeaponClasses['MEDIUM_CALIBER'],
-        [`WEAPON_MP9`] = Config.WeaponClasses['MEDIUM_CALIBER'],
-        --[[ SMALL CALIBER ]]
-        [`WEAPON_GLOCK17`] = Config.WeaponClasses['SMALL_CALIBER'],
-        [`WEAPON_M9`] = Config.WeaponClasses['SMALL_CALIBER'],
-        [`WEAPON_M1911`] = Config.WeaponClasses['SMALL_CALIBER'],
-        [`WEAPON_FNX45`] = Config.WeaponClasses['SMALL_CALIBER'],
-        --[[ SHOTGUN ]]
-        [`WEAPON_REMINGTON`] = Config.WeaponClasses['SHOTGUN'],
-        [`WEAPON_MOSSBERG`] = Config.WeaponClasses['SHOTGUN'],
-        --[[ CUTTING ]]
-        [`WEAPON_SHIV`] = Config.WeaponClasses['CUTTING'],
-        [`WEAPON_KATANA`] = Config.WeaponClasses['CUTTING'],
-        [`WEAPON_BAYONETKNIFE`] = Config.WeaponClasses['CUTTING'],
-        [`WEAPON_BLUEBFKNIFE`] = Config.WeaponClasses['CUTTING'],
-        [`WEAPON_BFKNIFE`] = Config.WeaponClasses['CUTTING'],
-        [`WEAPON_CHBFKNIFE`] = Config.WeaponClasses['CUTTING'],
-        [`WEAPON_CRIMSONBFKNIFE`] = Config.WeaponClasses['CUTTING'],
-        [`WEAPON_FADEBFKNIFE`] = Config.WeaponClasses['CUTTING'],
-        [`WEAPON_FLIPKNIFE`] = Config.WeaponClasses['CUTTING'],
-        [`WEAPON_FORESTBFKNIFE`] = Config.WeaponClasses['CUTTING'],
-        [`WEAPON_GUTKNIFE`] = Config.WeaponClasses['CUTTING'],
-        [`WEAPON_HUNTSMANKNIFE`] = Config.WeaponClasses['CUTTING'],
-        [`WEAPON_KARAMBITKNIFE`] = Config.WeaponClasses['CUTTING'],
-        [`WEAPON_SAFARIBFKNIFE`] = Config.WeaponClasses['CUTTING'],
-        [`WEAPON_SCORCHEDBFKNIFE`] = Config.WeaponClasses['CUTTING'],
-        [`WEAPON_SLAUGHTERBFKNIFE`] = Config.WeaponClasses['CUTTING'],
-        [`WEAPON_STAINEDRBFKNIFE`] = Config.WeaponClasses['CUTTING'],
-        [`WEAPON_URBANRBFKNIFE`] = Config.WeaponClasses['CUTTING'],
-        --[[ HEAVY IMPACT ]]
-        [`WEAPON_SLEDGEHAMMER`] = Config.WeaponClasses['HEAVY_IMPACT'],
-        [`WEAPON_PERFORATOR`] = Config.WeaponClasses['HEAVY_IMPACT'],
 }
 
 Config.VehicleSettings = { -- Enable or disable vehicle extras when pulling them from the ambulance job vehicle spawner
-    ["car1"] = { -- Model name
-        ["extras"] = {
-            ["1"] = false, -- on/off
-            ["2"] = true,
-            ["3"] = true,
-            ["4"] = true,
-            ["5"] = true,
-            ["6"] = true,
-            ["7"] = true,
-            ["8"] = true,
-            ["9"] = true,
-            ["10"] = true,
-            ["11"] = true,
-            ["12"] = true,
+    ['car1'] = {           -- Model name
+        ['extras'] = {
+            ['1'] = false, -- on/off
+            ['2'] = true,
+            ['3'] = true,
+            ['4'] = true,
+            ['5'] = true,
+            ['6'] = true,
+            ['7'] = true,
+            ['8'] = true,
+            ['9'] = true,
+            ['10'] = true,
+            ['11'] = true,
+            ['12'] = true,
         }
     },
-    ["car2"] = {
-        ["extras"] = {
-            ["1"] = false,
-            ["2"] = true,
-            ["3"] = true,
-            ["4"] = true,
-            ["5"] = true,
-            ["6"] = true,
-            ["7"] = true,
-            ["8"] = true,
-            ["9"] = true,
-            ["10"] = true,
-            ["11"] = true,
-            ["12"] = true,
+    ['car2'] = {
+        ['extras'] = {
+            ['1'] = false,
+            ['2'] = true,
+            ['3'] = true,
+            ['4'] = true,
+            ['5'] = true,
+            ['6'] = true,
+            ['7'] = true,
+            ['8'] = true,
+            ['9'] = true,
+            ['10'] = true,
+            ['11'] = true,
+            ['12'] = true,
         }
     }
 }
